@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.productcatalog.catalog.product.model.Product;
 
 @Entity
@@ -28,7 +29,7 @@ public class Category {
 
 	@Column(name = "CATEGORY_DESCRIPTION")
 	private String description;
-	@JsonIgnore
+	@JsonIgnoreProperties("category")
 	@OneToMany(mappedBy = "category" , cascade = CascadeType.ALL, orphanRemoval = true)
 	List<Product> products;
 
